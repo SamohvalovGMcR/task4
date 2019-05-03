@@ -1,0 +1,30 @@
+/* Styles go here */
+
+
+/* Styles go here */
+
+.fflex {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#up1 {
+    margin-left: 3%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.span1 {
+    position: absolute;
+    margin: 1.5% auto;
+    left: 1%;
+}
+
+#dn {
+    justify-content: space-around;
+    margin-left: 3%;
+}

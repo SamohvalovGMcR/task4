@@ -7,39 +7,107 @@
 </head>
 
 <body>
-    <div id="up">Исходное положение:<br><br>
-        <input id="vvod" type="text" />
-        <button id="vybod">Ok</button>
+    <div id="up1" class="">
     </div>
-    <div id="result">
-        Все возможные ходы: <br>
-        <div id="divp">
-        </div>
-        <button id="resultok">Ok</button>
+    <div id="dn" class="fflex">
     </div>
+
     <script>
-        vybod.onclick = () => {
-            if (vvod.value.length === 2 && +vvod.value[1] < 9) {
+        let l;
 
 
 
-                turn(vvod.value[0].toLowerCase(), +vvod.value[1]);
-
-                divp.innerHTML = arr1.join(' ') + "<br>";
-
-                vybod.style.display = "none";
-                result.style.display = "block";
-            } else alert("не верно!");
-
-            resultok.onclick = () => {
-                vvod.value = "";
-                result.style.display = "none";
-                vybod.style.display = "";
-            };
+        l = window.innerWidth / 1.2; //размер доски
 
 
+        up1.style.width = l / 2 + "px";
+        up1.style.height = l / 2 + "px";
+        dn.style.width = l / 2 + "px";
+        dn.style.height = l / 2 / 8 + "px";
+        dn.style.fontSize = l / 32 + "px"
 
+        for (let k = 1; k < arr.length; k++) {
+            const span3 = document.createElement('span');
+            span3.innerHTML = arr[k];
+            dn.appendChild(span3);
         };
+
+
+
+
+        for (let i = 8; i >= 1; i--) {
+            const block1 = document.createElement('div');
+            //block1.style.width='20px';
+            block1.style.height = l / 8 - 8 + 'px';
+            // block1.innerHTML=i+[];
+            block1.classList.add("fflex");
+            const span1 = document.createElement('span');
+
+            span1.classList.add("span1");
+            block1.appendChild(span1);
+            span1.style.fontSize = l / 32 + "px"
+            document.getElementById('up1').appendChild(block1);
+            for (let j = 1; j <= 8; j++) {
+                const block2 = document.createElement('div');
+
+
+
+
+                block1.appendChild(block2);
+                block2.style.flexGrow = "1"
+                block2.dataset.str = arr[j];
+                block2.dataset.num = i;
+                span1.innerHTML = i
+
+
+                block2.onmouseup = (e) => {
+                    clearfn();
+                }
+                block2.onmousedown = (e) => {
+
+
+                    e.target.style.backgroundColor = "blue";
+
+                    turn(e.target.dataset.str, +e.target.dataset.num);
+
+
+                    for (let key1 in Bbb) {
+
+                        if (arr1.inArray(Bbb[key1].dataset.str + Bbb[key1].dataset.num)) {
+                            Bbb[key1].style.backgroundColor = "green";
+
+
+                        }
+
+                    };
+                    arr1 = [];
+
+                };
+            } // for j 
+        } //fof i
+
+        let Bbb = document.getElementById('up1').getElementsByTagName("DIV");
+
+        const clearfn = () => {
+            let c = 0;
+
+            for (let key2 in Bbb) {
+                if (Bbb[key2].dataset.num) {
+
+                    if (c === 0) {
+                        Bbb[key2].style.backgroundColor = "white";
+                        if (Bbb[key2].dataset.str !== "h") c = 1
+
+                    } else {
+                        Bbb[key2].style.backgroundColor = "black";
+                        if (Bbb[key2].dataset.str !== "h") c = 0
+
+                    }
+                }
+            }
+        }
+
+        clearfn();
     </script>
 </body>
 

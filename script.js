@@ -1,3 +1,13 @@
+Array.prototype.inArray = function(value) {
+
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === value) {
+            return true;
+        }
+    }
+    return false;
+};
+
 const obj = {
     "a": 1,
     "b": 2,

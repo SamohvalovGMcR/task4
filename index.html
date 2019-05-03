@@ -71,10 +71,10 @@
                     turn(e.target.dataset.str, +e.target.dataset.num);
 
 
-                    for (let key1 in Bbb) {
+                    for (let key1 in elements) {
 
-                        if (arr1.inArray(Bbb[key1].dataset.str + Bbb[key1].dataset.num)) {
-                            Bbb[key1].style.backgroundColor = "green";
+                        if (arr1.inArray(elements[key1].dataset.str + elements[key1].dataset.num)) {
+                            elements[key1].style.backgroundColor = "green";
 
 
                         }
@@ -86,21 +86,21 @@
             } // for j 
         } //fof i
 
-        let Bbb = document.getElementById('up1').getElementsByTagName("DIV");
+        let elements = up1.querySelectorAll('.fflex div');
 
         const clearfn = () => {
             let c = 0;
 
-            for (let key2 in Bbb) {
-                if (Bbb[key2].dataset.num) {
+            for (let key2 in elements) {
+                if (elements[key2].dataset.num) {
 
                     if (c === 0) {
-                        Bbb[key2].style.backgroundColor = "white";
-                        if (Bbb[key2].dataset.str !== "h") c = 1
+                        elements[key2].style.backgroundColor = "white";
+                        if (elements[key2].dataset.str !== "h") c = 1
 
                     } else {
-                        Bbb[key2].style.backgroundColor = "black";
-                        if (Bbb[key2].dataset.str !== "h") c = 0
+                        elements[key2].style.backgroundColor = "black";
+                        if (elements[key2].dataset.str !== "h") c = 0
 
                     }
                 }
